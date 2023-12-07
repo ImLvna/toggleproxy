@@ -1,0 +1,10 @@
+[Unit]
+Description=A togglable socks5 proxy
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/toggleproxy run
+
+[Install]
+WantedBy=multi-user.target
