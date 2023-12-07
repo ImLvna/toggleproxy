@@ -8,9 +8,6 @@ use anyhow::Result;
 
 use log::{error, trace};
 
-use notify::Watcher;
-
-#[allow(non_snake_case)]
 #[derive(Serialize, Deserialize, Clone)]
 pub struct Config {
     pub port: u16,
@@ -86,16 +83,6 @@ pub fn get_config() -> Config {
     config.target = match args.get_one::<String>("target") {
         Some(target) => target.to_owned(),
         None => config.target,
-    };
-
-    config.status = match args.get_one::<bool>("status") {
-        Some(status) => *status,
-        None => config.status,
-    };
-
-    config.systemd = match args.get_one::<bool>("systemd") {
-        Some(systemd) => *systemd,
-        None => config.systemd,
     };
 
     return config;

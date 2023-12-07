@@ -30,10 +30,7 @@ async fn main() {
             }
         }
         Some(("toggle", _)) => {
-            config.status = args
-                .get_one::<bool>("status")
-                .unwrap_or(&!config.status)
-                .to_owned();
+            config.status = !config.status;
             println!(
                 "Proxy server is now {}",
                 match config.status {

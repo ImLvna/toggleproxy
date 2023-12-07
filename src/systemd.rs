@@ -1,4 +1,5 @@
 use anyhow::{anyhow, Result};
+use log::{error, trace};
 
 #[cfg(not(target_os = "linux"))]
 pub fn systemd_restart() -> Result<()> {

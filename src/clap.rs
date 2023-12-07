@@ -34,10 +34,8 @@ pub fn get_args() -> ArgMatches {
                 .value_parser(value_parser!(String))
                 .default_value(CONFIG_FILE.to_str().unwrap()),
         )
-        .arg(arg!(-p --port <PORT> "Sets a custom port"))
+        .arg(arg!(-p --port <PORT> "Sets a custom port").value_parser(value_parser!(u16)))
         .arg(arg!(-t --target <TARGET> "Sets a custom target proxy"))
-        .arg(arg!(-s --status <STATUS> "Sets the status of the proxy server"))
-        .arg(arg!(--systemd "Allows toggleproxy to reload itself"))
         .subcommand(command!("run").about("Starts the proxy server"))
         .subcommand(command!("toggle").about("Toggles the proxy server on or off"))
         .subcommand(command!("config").about("Writes the config file to disk"))
